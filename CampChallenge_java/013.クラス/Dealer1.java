@@ -22,13 +22,13 @@ public class Dealer1 extends Human {
 
         for (int j = 1; j <= 4; j++) {
             for (int i = 1; i <= 10; i++) {
-
-                Cards.add(i);
-                Cards.add(10);
-                Cards.add(10);
-                Cards.add(10);
-
+                Cards.add(i);                
             }
+      
+                Cards.add(10);
+                Cards.add(10);
+                Cards.add(10);
+ 
         }
 
     }
