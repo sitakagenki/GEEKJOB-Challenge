@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import jums.UserDataBeans;
+
 /**
  * insertconfirm.jspと対応するサーブレット
  * フォーム入力された情報はここでセッションに格納し、以降持ちまわることになる
@@ -35,13 +37,28 @@ public class InsertConfirm extends HttpServlet {
             }
             
             //フォームからの入力を取得
-            String name = request.getParameter("name");
+            String name = request.getParameter("name");  //ここでは、取り出せた。
             String year = request.getParameter("year");
             String month = request.getParameter("month");
             String day = request.getParameter("day");
             String type = request.getParameter("type");
             String tell = request.getParameter("tell");
             String comment = request.getParameter("comment");
+            
+            //とりあえず、「JavaBeans(UserDataBeans)」に格納、一まとめにして、セッションに保存。
+            //保存した物から取り出して、「resultconfirm.jsp」で分岐。
+            
+            UserDataBeans UDB = new UserDataBeans();
+            
+            UDB.setName(name);
+            UDB.setYear(year);
+            UDB.setMonth(month);
+            UDB.setDay(day);
+            UDB.setType(type);
+            UDB.setTell(tell);
+            UDB.setComment(comment);
+            
+            session.setAttribute("User",UDB);
 
             //セッションに格納
             session.setAttribute("name", name);
